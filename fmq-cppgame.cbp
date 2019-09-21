@@ -15,11 +15,11 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add option="-lsfml-audio" />
-					<Add option="-lsfml-graphics" />
-					<Add option="-lsfml-network" />
-					<Add option="-lsfml-system" />
-					<Add option="-lsfml-window" />
+					<Add library=".sfml/lib/libsfml-audio.so" />
+					<Add library=".sfml/lib/libsfml-graphics.so" />
+					<Add library=".sfml/lib/libsfml-network.so" />
+					<Add library=".sfml/lib/libsfml-system.so" />
+					<Add library=".sfml/lib/libsfml-window.so" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -32,11 +32,11 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add option="-lsfml-audio" />
-					<Add option="-lsfml-graphics" />
-					<Add option="-lsfml-network" />
-					<Add option="-lsfml-system" />
-					<Add option="-lsfml-window" />
+					<Add library=".sfml/lib/libsfml-audio.so" />
+					<Add library=".sfml/lib/libsfml-graphics.so" />
+					<Add library=".sfml/lib/libsfml-network.so" />
+					<Add library=".sfml/lib/libsfml-system.so" />
+					<Add library=".sfml/lib/libsfml-window.so" />
 				</Linker>
 			</Target>
 		</Build>
