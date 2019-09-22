@@ -20,17 +20,17 @@ GameState::~GameState()
 
 void GameState::_initGameState()
 {
-    this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
+    // this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
 
-    // int counter = 100;
-    // while (counter > 0)
-    // {
-    //     if (counter < 25)
-    //         this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
-    //     else if (counter < 100)
-    //         this->_entities.push_back(new Circle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize()));
-    //     --counter;
-    // }
+    int counter = 100;
+    while (counter > 0)
+    {
+        if (counter < 25)
+            this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
+        else if (counter < 100)
+            this->_entities.push_back(new Circle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize()));
+        --counter;
+    }
 }
 
 const bool &GameState::getQuit() const
@@ -38,19 +38,13 @@ const bool &GameState::getQuit() const
     return this->_quit;
 }
 
-void GameState::_checkForInput()
+void GameState::startGame()
 {
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-        this->_quit = true;
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-        this->_initGameState();
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
-        this->_animating = false;
+    this->_initGameState();
 }
 
 void GameState::update(const float &dt)
 {
-    this->_checkForInput();
     for (size_t i = 0; i < this->_entities.size(); i++)
     {
         if (!this->_entities[i]->getHasAnimationFinished())

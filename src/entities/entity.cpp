@@ -5,6 +5,8 @@ Entity::Entity(int x, int y, int speed)
     this->_shape = NULL;
     this->_movement = NULL;
     this->_hasAnimationFinished = false;
+    this->_direction_x = this->_getRandomDirection();
+    this->_direction_y = this->_getRandomDirection();
 }
 
 Entity::~Entity()
@@ -16,12 +18,7 @@ Entity::~Entity()
 
 void Entity::move(const float &dt)
 {
-    //initialize directions if null
-    this->_direction_x = this->_direction_x ? this->_direction_x : this->_getRandomDirection();
-    this->_direction_y = this->_direction_y ? this->_direction_y : this->_getRandomDirection();
-
-    if (this->_movement)
-        this->_movement->move(this->_direction_x, this->_direction_y, dt);
+    this->_movement->move(this->_direction_x, this->_direction_y, dt);
 }
 
 void Entity::update(const float &dt)
@@ -52,8 +49,8 @@ bool Entity::_checkCollision()
 
 float Entity::_getRandomDirection()
 {
-    //returns a random float that define direction
-    return (static_cast<float>(rand()) / static_cast<float>(RAND_MAX)) * (rand() % 2 == 0 ? 1 : -1);
+    float diff = 1.0 - 0.3;
+    return (((static_cast<float>(rand()) / RAND_MAX) * diff) + 0.3) * (rand() % 2 == 0 ? 1 : -1);
 }
 
 const bool &Entity::getHasAnimationFinished() const

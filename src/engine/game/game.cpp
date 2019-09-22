@@ -33,6 +33,14 @@ void Game::updateSFMLEvents()
     {
         if (this->_sfEvent.type == sf::Event::Closed)
             this->_window->close();
+        if (this->_sfEvent.type == sf::Event::KeyPressed)
+        {
+            if (this->_sfEvent.key.code == sf::Keyboard::Space)
+            {
+                std::cout << "the space key was pressed" << std::endl;
+                this->_state->startGame();
+            }
+        }
     }
 }
 

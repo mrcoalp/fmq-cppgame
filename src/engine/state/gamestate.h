@@ -17,6 +17,7 @@ public:
 
     void update(const float &dt);
     void render(sf::RenderTarget *target = NULL);
+    void startGame();
 
 protected:
 private:
@@ -26,7 +27,6 @@ private:
     bool _animating;
     std::vector<Entity *> _entities;
 
-    void _checkForInput();
     void _initGameState();
     sf::Color _getRandomColor();
     int _getRandomSpeed();
