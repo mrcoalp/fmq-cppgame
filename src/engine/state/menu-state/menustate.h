@@ -13,11 +13,11 @@ class MenuState : public State
 {
 public:
     MenuState(sf::RenderWindow *window);
-    virtual ~MenuState();
+    ~MenuState();
 
     void updateKeybinds(const float &dt);
     void update(const float &dt);
-    void render(sf::RenderTarget *target = nullptr);
+    void render(sf::RenderTarget *target = NULL);
 
 protected:
 private:

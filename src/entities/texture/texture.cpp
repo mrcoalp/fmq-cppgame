@@ -1,13 +1,21 @@
 #include "texture.h"
 
-Texture::Texture(int x, int y, int speed, sf::Texture *texture) : Entity(x, y, speed)
+Texture::Texture(int x, int y, int speed, sf::Color color) : Entity(x, y, speed)
 {
-    this->_sprite.setTexture(*texture);
-    this->_sprite.setPosition(x, y);
+    this->_texture = new sf::Texture;
+    if (this->_texture->loadFromFile("/home/marco/Development/fmq-cppgame/src/assets/fmq.png"))
+    {
+        this->_texture->setSmooth(true);
+        this->_sprite.setTexture(*this->_texture);
+        this->_sprite.setColor(color);
+        this->_sprite.setPosition(x, y);
+    }
 }
 
 Texture::~Texture()
 {
+    delete this->_texture;
+    std::cout << "texture cleared\n";
 }
 
 void Texture::move(const float &dt)
@@ -21,13 +29,16 @@ void Texture::move(const float &dt)
         this->_hasAnimationFinished = true;
     }
     //move entity
-    if (!this->_hasAnimationFinished)
-        this->_sprite.move(this->_direction_x * this->_speed * dt, this->_direction_y * this->_speed * dt);
+    this->_sprite.move(this->_direction_x * this->_speed * dt, this->_direction_y * this->_speed * dt);
 }
 
 void Texture::update(const float &dt)
 {
-    this->move(dt);
+    if (!this->_hasAnimationFinished)
+    {
+        this->move(dt);
+        this->animate();
+    }
 }
 
 void Texture::render(sf::RenderTarget *target)
@@ -41,3 +52,5 @@ bool Texture::checkCollision()
 {
     return !(this->_sprite.getPosition().x > 0 && this->_sprite.getPosition().x + this->_sprite.getGlobalBounds().width < WINDOW_WIDTH && this->_sprite.getPosition().y > 0 && this->_sprite.getPosition().y + this->_sprite.getGlobalBounds().height < WINDOW_HEIGHT);
 }
+
+void Texture::animate() {}

@@ -8,7 +8,7 @@ class Game
 {
 public:
     Game();
-    virtual ~Game();
+    ~Game();
 
     /**
      * Updates events occured in sfml

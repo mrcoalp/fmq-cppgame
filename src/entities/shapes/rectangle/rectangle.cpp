@@ -9,5 +9,10 @@ Rectangle::Rectangle(int x, int y, int speed, sf::Color color, float width, floa
 
 Rectangle::~Rectangle()
 {
-    //dtor
+    std::cout << "rectangle cleared\n";
+}
+
+void Rectangle::animate()
+{
+    this->_shape->rotate(10);
 }

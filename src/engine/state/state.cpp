@@ -9,7 +9,7 @@ State::State(sf::RenderWindow *window)
 
 State::~State()
 {
-    //dtor
+    std::cout << "state cleared\n";
 }
 
 const bool &State::getQuit() const

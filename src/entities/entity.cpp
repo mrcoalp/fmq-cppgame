@@ -8,6 +8,7 @@ Entity::Entity(int x, int y, int speed)
 
 Entity::~Entity()
 {
+    std::cout << "entity cleared\n";
 }
 
 float Entity::_getRandomDirection()

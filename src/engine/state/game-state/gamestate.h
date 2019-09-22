@@ -13,12 +13,12 @@ class GameState : public State
 {
 public:
     GameState(sf::RenderWindow *window);
-    virtual ~GameState();
+    ~GameState();
 
     void initGameState();
     void updateKeybinds(const float &dt);
     void update(const float &dt);
-    void render(sf::RenderTarget *target = nullptr);
+    void render(sf::RenderTarget *target = NULL);
 
 protected:
 private:

@@ -17,7 +17,7 @@ public:
     virtual void updateKeybinds(const float &dt) = 0;
 
     virtual void update(const float &dt) = 0;
-    virtual void render(sf::RenderTarget *target = nullptr) = 0;
+    virtual void render(sf::RenderTarget *target = NULL) = 0;
 
 protected:
     int _nrOfCredits;

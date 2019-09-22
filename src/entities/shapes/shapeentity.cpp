@@ -8,6 +8,7 @@ ShapeEntity::ShapeEntity(int x, int y, int speed, sf::Color color) : Entity(x, y
 ShapeEntity::~ShapeEntity()
 {
     delete this->_shape;
+    std::cout << "shape cleared\n";
 }
 
 void ShapeEntity::move(const float &dt)
@@ -27,7 +28,11 @@ void ShapeEntity::move(const float &dt)
 void ShapeEntity::update(const float &dt)
 {
     if (!this->_hasAnimationFinished)
+    {
+
         this->move(dt);
+        this->animate();
+    }
 }
 
 void ShapeEntity::render(sf::RenderTarget *target)

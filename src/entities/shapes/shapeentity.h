@@ -7,12 +7,13 @@ class ShapeEntity : public Entity
 {
 public:
     ShapeEntity(int x, int y, int speed, sf::Color color);
-    virtual ~ShapeEntity();
+    ~ShapeEntity();
 
     virtual void move(const float &dt);
     virtual void update(const float &dt);
-    virtual void render(sf::RenderTarget *target);
+    virtual void render(sf::RenderTarget *target = NULL);
     virtual bool checkCollision();
+    virtual void animate() = 0;
 
 protected:
     sf::Shape *_shape;

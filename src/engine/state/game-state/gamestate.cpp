@@ -2,31 +2,32 @@
 
 GameState::GameState(sf::RenderWindow *window) : State(window)
 {
+    //set seed for random generator
+    //prevents sequence of same numbers over and over
+    srand(time(NULL));
     this->initGameState();
 }
 
 GameState::~GameState()
 {
-    for (size_t i = 0; i < this->_entities.size(); i++)
-    {
-        delete this->_entities[i];
-    }
+    for (std::vector<Entity *>::iterator i = this->_entities.begin(); i != this->_entities.end(); ++i)
+        delete (*i);
+
+    std::cout << "gamestate cleared\n";
 }
 
 void GameState::initGameState()
 {
-    sf::Texture *texture = new sf::Texture();
-    texture->loadFromFile("/home/marco/Development/fmq-cppgame/src/assets/fmq.png");
-    texture->setSmooth(true);
-    this->_entities.push_back(new Texture(640, 360, this->_getRandomSpeed(), texture));
-
-    for (size_t i = 0; i < 75; i++)
+    int counter = 50;
+    while (counter > 0)
     {
-        if (i < 25)
+        if (counter < 25)
             this->_entities.push_back(new Circle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize()));
-        else if (i < 50)
+        else
             this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
+        --counter;
     }
+    this->_entities.push_back(new Texture(640, 360, this->_getRandomSpeed(), this->_getRandomColor()));
 }
 
 void GameState::updateKeybinds(const float &dt)
@@ -69,7 +70,8 @@ sf::Color GameState::_getRandomColor()
 
 int GameState::_getRandomSpeed()
 {
-    return (rand() % 5) * 100 + 100;
+    //returns 100, 200, 300 or 400 as speed
+    return (rand() % 4 + 1) * 100;
 }
 
 int GameState::_getRandomSize()

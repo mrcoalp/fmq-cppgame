@@ -6,16 +6,18 @@
 class Texture : public Entity
 {
 public:
-    Texture(int x, int y, int speed, sf::Texture *texture);
-    virtual ~Texture();
+    Texture(int x, int y, int speed, sf::Color color);
+    ~Texture();
 
     void move(const float &dt);
     void update(const float &dt);
-    void render(sf::RenderTarget *target);
+    void render(sf::RenderTarget *target = NULL);
     bool checkCollision();
+    void animate();
 
 protected:
 private:
+    sf::Texture *_texture;
     sf::Sprite _sprite;
 };
 

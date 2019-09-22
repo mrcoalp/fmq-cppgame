@@ -16,12 +16,18 @@ public:
      */
     virtual void move(const float &dt) = 0;
     virtual void update(const float &dt) = 0;
-    virtual void render(sf::RenderTarget *target = nullptr) = 0;
+    virtual void render(sf::RenderTarget *target = NULL) = 0;
     /**
      * Checks entity collision with window boundaries
      */
     virtual bool checkCollision() = 0;
     virtual const bool &getHasAnimationFinished() const;
+    /**
+     * Animates object
+     * Method to be implemented in child classes
+     * Each one has a different animation
+     */
+    virtual void animate() = 0;
 
 protected:
     float _direction_x;

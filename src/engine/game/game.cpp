@@ -19,11 +19,12 @@ Game::~Game()
         delete this->_states.top();
         this->_states.pop();
     }
+    std::cout << "game cleared\n";
 }
 
 void Game::_setupWindow()
 {
-    //new 800x600 window
+    //new window
     this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "FMQ");
 }
 
@@ -78,6 +79,7 @@ void Game::render()
 
 void Game::run()
 {
+    this->_window->setFramerateLimit(60);
     while (this->_window->isOpen())
     {
         this->update();
