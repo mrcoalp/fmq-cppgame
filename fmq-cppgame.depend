@@ -540,7 +540,7 @@
 1569167239 /home/marco/Development/fmq-cppgame/src/engine/game/game.h
 	"../../engine/state/gamestate.h"
 
-1569168496 source:/home/marco/Development/fmq-cppgame/src/engine/game/game.cpp
+1569184822 source:/home/marco/Development/fmq-cppgame/src/engine/game/game.cpp
 	"game.h"
 	<iostream>
 	"../../constants.h"
@@ -1087,14 +1087,15 @@
 	"../entities/entity.h"
 	"../entities/circle/circle.h"
 
-1569168349 /home/marco/Development/fmq-cppgame/src/entities/entity.h
+1569183933 /home/marco/Development/fmq-cppgame/src/entities/entity.h
 	"../headers/sfml.h"
 	"../constants.h"
 	<iostream>
+	"../engine/movement/movementcomponent.h"
 
 1569087580 /home/marco/Development/fmq-cppgame/src/helpers/position.h
 
-1569095277 /home/marco/Development/fmq-cppgame/src/entities/circle/circle.h
+1569174369 /home/marco/Development/fmq-cppgame/src/entities/circle/circle.h
 	"../entity.h"
 
 1569092615 /home/marco/Development/fmq-cppgame/src/entities/testing.h
@@ -1103,18 +1104,18 @@
 1569092615 source:/home/marco/Development/fmq-cppgame/src/entities/testing.cpp
 	"entity.h"
 
-1569095265 source:/home/marco/Development/fmq-cppgame/src/entities/circle/circle.cpp
+1569183933 source:/home/marco/Development/fmq-cppgame/src/entities/circle/circle.cpp
 	"circle.h"
 
-1569154235 source:/home/marco/Development/fmq-cppgame/src/entities/entity.cpp
+1569184403 source:/home/marco/Development/fmq-cppgame/src/entities/entity.cpp
 	"entity.h"
 
-1569095095 /home/marco/Development/fmq-cppgame/src/constants.h
+1569183272 /home/marco/Development/fmq-cppgame/src/constants.h
 
 1569168349 source:/home/marco/Development/fmq-cppgame/src/entities/shapes/shapeentity.cpp
 	"shapeentity.h"
 
-1569168349 /home/marco/Development/fmq-cppgame/src/entities/shapes/shapeentity.h
+1569171886 /home/marco/Development/fmq-cppgame/src/entities/shapes/shapeentity.h
 	"../entity.h"
 
 1569164177 /home/marco/Development/fmq-cppgame/src/entities/shapes/circle/circle.h
@@ -1129,7 +1130,7 @@
 1569156791 source:/home/marco/Development/fmq-cppgame/src/entities/shapes/rectangle/rectangle.cpp
 	"rectangle.h"
 
-1569168349 /home/marco/Development/fmq-cppgame/src/entities/texture/texture.h
+1569171886 /home/marco/Development/fmq-cppgame/src/entities/texture/texture.h
 	"../entity.h"
 
 1569168349 source:/home/marco/Development/fmq-cppgame/src/entities/texture/texture.cpp
@@ -1146,15 +1147,25 @@
 	"../../../entities/texture/texture.h"
 	<vector>
 
-1569168349 /home/marco/Development/fmq-cppgame/src/engine/state/gamestate.h
+1569178249 /home/marco/Development/fmq-cppgame/src/engine/state/gamestate.h
 	"../../headers/sfml.h"
-	"../../entities/entity.h"
-	"../../entities/shapes/circle/circle.h"
-	"../../entities/shapes/rectangle/rectangle.h"
-	"../../entities/texture/texture.h"
+	"../../entities/circle/circle.h"
+	"../../entities/rectangle/rectangle.h"
 	<stack>
 	<iostream>
 
-1569168505 source:/home/marco/Development/fmq-cppgame/src/engine/state/gamestate.cpp
+1569183988 source:/home/marco/Development/fmq-cppgame/src/engine/state/gamestate.cpp
 	"gamestate.h"
+
+1569174369 /home/marco/Development/fmq-cppgame/src/entities/rectangle/rectangle.h
+	"../entity.h"
+
+1569183933 source:/home/marco/Development/fmq-cppgame/src/engine/movement/movementcomponent.cpp
+	"movementcomponent.h"
+
+1569183933 /home/marco/Development/fmq-cppgame/src/engine/movement/movementcomponent.h
+	"../../headers/sfml.h"
+
+1569183933 source:/home/marco/Development/fmq-cppgame/src/entities/rectangle/rectangle.cpp
+	"rectangle.h"
 

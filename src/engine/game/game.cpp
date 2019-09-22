@@ -1,6 +1,5 @@
 #include "game.h"
 #include <iostream>
-
 #include "../../constants.h"
 
 Game::Game()
@@ -51,7 +50,7 @@ void Game::update()
     if (this->_state->getQuit())
         this->_window->close();
     else
-        this->_state->update();
+        this->_state->update(this->_dt);
 }
 
 void Game::render()
@@ -63,7 +62,8 @@ void Game::render()
 
 void Game::run()
 {
-    this->_window->setFramerateLimit(120);
+    this->_window->setFramerateLimit(60);
+    this->_window->setKeyRepeatEnabled(false);
     while (this->_window->isOpen())
     {
         this->update();

@@ -2,10 +2,8 @@
 #define GAMESTATE_H
 
 #include "../../headers/sfml.h"
-#include "../../entities/entity.h"
-#include "../../entities/shapes/circle/circle.h"
-#include "../../entities/shapes/rectangle/rectangle.h"
-#include "../../entities/texture/texture.h"
+#include "../../entities/circle/circle.h"
+#include "../../entities/rectangle/rectangle.h"
 #include <stack>
 #include <iostream>
 
@@ -17,7 +15,7 @@ public:
 
     const bool &getQuit() const;
 
-    void update();
+    void update(const float &dt);
     void render(sf::RenderTarget *target = NULL);
 
 protected:
@@ -26,7 +24,7 @@ private:
     bool _quit;
     int _nrOfCredits;
     bool _animating;
-    std::vector<Entity *> *_entities;
+    std::vector<Entity *> _entities;
 
     void _checkForInput();
     void _initGameState();

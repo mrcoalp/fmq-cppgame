@@ -1,8 +1,9 @@
 #include "circle.h"
 
-Circle::Circle(int x, int y, int speed, sf::Color color, int radius) : ShapeEntity(x, y, speed, color)
+Circle::Circle(int x, int y, int speed, sf::Color color, int radius) : Entity(x, y, speed)
 {
     this->_shape = new sf::CircleShape(radius);
+    this->_createMovement(speed, static_cast<float>((rand() % 2 + 1) * 10));
     this->_shape->setFillColor(color);
     this->_shape->setPosition(x, y);
     this->_grow = true;

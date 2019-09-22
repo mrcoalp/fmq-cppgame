@@ -4,6 +4,7 @@
 #include "../headers/sfml.h"
 #include "../constants.h"
 #include <iostream>
+#include "../engine/movement/movementcomponent.h"
 
 class Entity
 {
@@ -14,13 +15,9 @@ public:
     /**
      * Updates entity position
      */
-    virtual void move() = 0;
-    virtual void update() = 0;
-    virtual void render(sf::RenderTarget *target = NULL) = 0;
-    /**
-     * Checks entity collision with window boundaries
-     */
-    virtual bool checkCollision() = 0;
+    virtual void move(const float &dt);
+    virtual void update(const float &dt);
+    virtual void render(sf::RenderTarget *target = NULL);
     virtual const bool &getHasAnimationFinished() const;
     /**
      * Animates object
@@ -30,17 +27,24 @@ public:
     virtual void animate() = 0;
 
 protected:
+    sf::Shape *_shape;
+    MovementComponent *_movement;
+
+    void _createMovement(const float speed, const float acceleration);
+
+private:
     float _direction_x;
     float _direction_y;
-    float _speed;
     bool _hasAnimationFinished;
 
+    /**
+     * Checks entity collision with window boundaries
+     */
+    bool _checkCollision();
     /**
      * Returns a random float between -1 and 1
      */
     float _getRandomDirection();
-
-private:
 };
 
 #endif // ENTITY_H

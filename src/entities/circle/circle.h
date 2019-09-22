@@ -1,9 +1,9 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "../shapeentity.h"
+#include "../entity.h"
 
-class Circle : public ShapeEntity
+class Circle : public Entity
 {
 public:
     Circle(int x, int y, int speed, sf::Color color, int radius);

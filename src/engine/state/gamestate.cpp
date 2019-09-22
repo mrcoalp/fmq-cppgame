@@ -8,30 +8,29 @@ GameState::GameState(sf::RenderWindow *window)
     this->_quit = false;
     this->_nrOfCredits = 0;
     this->_animating = false;
+    // this->_initGameState();
 }
 
 GameState::~GameState()
 {
-    for (std::vector<Entity *>::iterator i = this->_entities->begin(); i != this->_entities->end(); ++i)
-        delete (*i);
-    delete this->_entities;
+    for (std::vector<Entity *>::iterator i = this->_entities.begin(); i != this->_entities.end(); ++i)
+        delete *i;
     std::cout << "game state cleared\n";
 }
 
 void GameState::_initGameState()
 {
-    this->_entities = new std::vector<Entity *>();
-    int counter = 50;
-    while (counter > 0)
-    {
-        if (counter < 25)
-            this->_entities->push_back(new Circle(640, 360, 5, this->_getRandomColor(), this->_getRandomSize()));
-        else
-            this->_entities->push_back(new Rectangle(640, 360, 4, this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
-        --counter;
-    }
-    // this->_entities->push_back(new Texture(640, 360, this->_getRandomSpeed(), this->_getRandomColor()));
-    this->_animating = true;
+    this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
+
+    // int counter = 100;
+    // while (counter > 0)
+    // {
+    //     if (counter < 25)
+    //         this->_entities.push_back(new Rectangle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize(), this->_getRandomSize()));
+    //     else if (counter < 100)
+    //         this->_entities.push_back(new Circle(640, 360, this->_getRandomSpeed(), this->_getRandomColor(), this->_getRandomSize()));
+    //     --counter;
+    // }
 }
 
 const bool &GameState::getQuit() const
@@ -45,22 +44,27 @@ void GameState::_checkForInput()
         this->_quit = true;
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
         this->_initGameState();
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::P))
+        this->_animating = false;
 }
 
-void GameState::update()
+void GameState::update(const float &dt)
 {
     this->_checkForInput();
-
-    if (this->_animating)
-        for (std::vector<Entity *>::iterator i = this->_entities->begin(); i != this->_entities->end(); ++i)
-            (*i)->update();
+    for (size_t i = 0; i < this->_entities.size(); i++)
+    {
+        if (!this->_entities[i]->getHasAnimationFinished())
+        {
+            this->_entities[i]->move(dt);
+            this->_entities[i]->update(dt);
+        }
+    }
 }
 
 void GameState::render(sf::RenderTarget *target)
 {
-    if (this->_animating)
-        for (std::vector<Entity *>::iterator i = this->_entities->begin(); i != this->_entities->end(); ++i)
-            (*i)->render(target);
+    for (size_t i = 0; i < this->_entities.size(); i++)
+        this->_entities[i]->render(target);
 }
 
 sf::Color GameState::_getRandomColor()
@@ -84,11 +88,34 @@ sf::Color GameState::_getRandomColor()
 
 int GameState::_getRandomSpeed()
 {
-    //returns 100, 200, 300 or 400 as speed
-    return (rand() % 4 + 1) * 100;
+    switch (rand() % 4)
+    {
+    case 0:
+        return 50;
+    case 1:
+        return 100;
+    case 2:
+        return 150;
+    case 3:
+        return 200;
+    default:
+        return 0;
+    }
 }
 
 int GameState::_getRandomSize()
 {
-    return rand() % 6 + 30;
+    switch (rand() % 4)
+    {
+    case 0:
+        return 20;
+    case 1:
+        return 30;
+    case 2:
+        return 40;
+    case 3:
+        return 50;
+    default:
+        return 0;
+    }
 }
