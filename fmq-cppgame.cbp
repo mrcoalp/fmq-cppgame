@@ -15,6 +15,7 @@
 					<Add option="-g" />
 					<Add directory="src/entities/texture" />
 					<Add directory="src/engine/state/menu-state" />
+					<Add directory="src/engine/state" />
 				</Compiler>
 				<Linker>
 					<Add library=".sfml/lib/libsfml-audio.so" />
@@ -33,6 +34,7 @@
 					<Add option="-O2" />
 					<Add directory="src/entities/texture" />
 					<Add directory="src/engine/state/menu-state" />
+					<Add directory="src/engine/state" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -54,12 +56,8 @@
 		</Linker>
 		<Unit filename="src/engine/game/game.cpp" />
 		<Unit filename="src/engine/game/game.h" />
-		<Unit filename="src/engine/state/game-state/gamestate.cpp" />
-		<Unit filename="src/engine/state/game-state/gamestate.h" />
-		<Unit filename="src/engine/state/menu-state/menustate.cpp" />
-		<Unit filename="src/engine/state/menu-state/menustate.h" />
-		<Unit filename="src/engine/state/state.cpp" />
-		<Unit filename="src/engine/state/state.h" />
+		<Unit filename="src/engine/state/gamestate.cpp" />
+		<Unit filename="src/engine/state/gamestate.h" />
 		<Unit filename="src/entities/entity.cpp" />
 		<Unit filename="src/entities/entity.h" />
 		<Unit filename="src/entities/shapes/circle/circle.cpp" />
