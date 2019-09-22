@@ -1,5 +1,5 @@
-#ifndef GAMESTATE_H
-#define GAMESTATE_H
+#ifndef MENUSTATE_H
+#define MENUSTATE_H
 
 #include "../state.h"
 #include "../../../entities/entity.h"
@@ -9,24 +9,18 @@
 
 #include <vector>
 
-class GameState : public State
+class MenuState : public State
 {
 public:
-    GameState(sf::RenderWindow *window);
-    virtual ~GameState();
+    MenuState(sf::RenderWindow *window);
+    virtual ~MenuState();
 
-    void initGameState();
     void updateKeybinds(const float &dt);
     void update(const float &dt);
     void render(sf::RenderTarget *target = nullptr);
 
 protected:
 private:
-    std::vector<Entity *> _entities;
-
-    sf::Color _getRandomColor();
-    int _getRandomSpeed();
-    int _getRandomSize();
 };
 
-#endif // GAMESTATE_H
+#endif // MENUSTATE_H

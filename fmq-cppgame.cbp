@@ -13,6 +13,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add directory="src/entities/texture" />
+					<Add directory="src/engine/state/menu-state" />
 				</Compiler>
 				<Linker>
 					<Add library=".sfml/lib/libsfml-audio.so" />
@@ -29,6 +31,8 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="src/entities/texture" />
+					<Add directory="src/engine/state/menu-state" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -53,8 +57,20 @@
 		<Unit filename="src/engine/game/game.h" />
 		<Unit filename="src/engine/state/game-state/gamestate.cpp" />
 		<Unit filename="src/engine/state/game-state/gamestate.h" />
+		<Unit filename="src/engine/state/menu-state/menustate.cpp" />
+		<Unit filename="src/engine/state/menu-state/menustate.h" />
 		<Unit filename="src/engine/state/state.cpp" />
 		<Unit filename="src/engine/state/state.h" />
+		<Unit filename="src/entities/entity.cpp" />
+		<Unit filename="src/entities/entity.h" />
+		<Unit filename="src/entities/shapes/circle/circle.cpp" />
+		<Unit filename="src/entities/shapes/circle/circle.h" />
+		<Unit filename="src/entities/shapes/rectangle/rectangle.cpp" />
+		<Unit filename="src/entities/shapes/rectangle/rectangle.h" />
+		<Unit filename="src/entities/shapes/shapeentity.cpp" />
+		<Unit filename="src/entities/shapes/shapeentity.h" />
+		<Unit filename="src/entities/texture/texture.cpp" />
+		<Unit filename="src/entities/texture/texture.h" />
 		<Unit filename="src/main.cpp" />
 		<Extensions>
 			<code_completion />
