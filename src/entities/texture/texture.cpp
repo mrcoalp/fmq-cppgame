@@ -18,7 +18,7 @@ Texture::~Texture()
     std::cout << "texture cleared\n";
 }
 
-void Texture::move(const float &dt)
+void Texture::move()
 {
     //initialize directions if null
     this->_direction_x = this->_direction_x ? this->_direction_x : this->_getRandomDirection();
@@ -29,14 +29,14 @@ void Texture::move(const float &dt)
         this->_hasAnimationFinished = true;
     }
     //move entity
-    this->_sprite.move(this->_direction_x * this->_speed * dt, this->_direction_y * this->_speed * dt);
+    this->_sprite.move(this->_direction_x * this->_speed, this->_direction_y * this->_speed);
 }
 
-void Texture::update(const float &dt)
+void Texture::update()
 {
     if (!this->_hasAnimationFinished)
     {
-        this->move(dt);
+        this->move();
         this->animate();
     }
 }

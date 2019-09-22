@@ -11,7 +11,7 @@ ShapeEntity::~ShapeEntity()
     std::cout << "shape cleared\n";
 }
 
-void ShapeEntity::move(const float &dt)
+void ShapeEntity::move()
 {
     //initialize directions if null
     this->_direction_x = this->_direction_x ? this->_direction_x : this->_getRandomDirection();
@@ -22,15 +22,15 @@ void ShapeEntity::move(const float &dt)
         this->_hasAnimationFinished = true;
     }
     //move entity if animation not finished
-    this->_shape->move(this->_direction_x * this->_speed * dt, this->_direction_y * this->_speed * dt);
+    this->_shape->move(this->_direction_x * this->_speed, this->_direction_y * this->_speed);
 }
 
-void ShapeEntity::update(const float &dt)
+void ShapeEntity::update()
 {
     if (!this->_hasAnimationFinished)
     {
 
-        this->move(dt);
+        this->move();
         this->animate();
     }
 }

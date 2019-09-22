@@ -1,8 +1,7 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../../engine/state/state.h"
-#include "../../engine/state/game-state/gamestate.h"
+#include "../../engine/state/gamestate.h"
 
 class Game
 {
@@ -37,14 +36,14 @@ private:
     //keeps track of time needed for one game loop
     sf::Clock _dtClock;
     float _dt;
-    std::stack<State *> _states;
+    GameState *_state;
 
     /**
      * Setups game window
      * Uses SFML graphics library
      */
     void _setupWindow();
-    void _setupStates();
+    void _setupState();
 };
 
 #endif // GAME_H

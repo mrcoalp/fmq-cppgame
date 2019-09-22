@@ -7,9 +7,9 @@ class Rectangle : public ShapeEntity
 {
 public:
     Rectangle(int x, int y, int speed, sf::Color color, float width, float height);
-    ~Rectangle();
+    virtual ~Rectangle();
 
-    void animate();
+    virtual void animate();
 
 protected:
 private:

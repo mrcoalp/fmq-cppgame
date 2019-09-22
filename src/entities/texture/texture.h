@@ -7,13 +7,13 @@ class Texture : public Entity
 {
 public:
     Texture(int x, int y, int speed, sf::Color color);
-    ~Texture();
+    virtual ~Texture();
 
-    void move(const float &dt);
-    void update(const float &dt);
-    void render(sf::RenderTarget *target = NULL);
-    bool checkCollision();
-    void animate();
+    virtual void move();
+    virtual void update();
+    virtual void render(sf::RenderTarget *target = NULL);
+    virtual bool checkCollision();
+    virtual void animate();
 
 protected:
 private:

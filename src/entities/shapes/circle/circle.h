@@ -7,9 +7,9 @@ class Circle : public ShapeEntity
 {
 public:
     Circle(int x, int y, int speed, sf::Color color, int radius);
-    ~Circle();
+    virtual ~Circle();
 
-    void animate();
+    virtual void animate();
 
 protected:
 private:

@@ -14,8 +14,8 @@ public:
     /**
      * Updates entity position
      */
-    virtual void move(const float &dt) = 0;
-    virtual void update(const float &dt) = 0;
+    virtual void move() = 0;
+    virtual void update() = 0;
     virtual void render(sf::RenderTarget *target = NULL) = 0;
     /**
      * Checks entity collision with window boundaries

@@ -5,20 +5,15 @@
 
 Game::Game()
 {
-    //setup window, states
+    //setup window, state
     this->_setupWindow();
-    this->_setupStates();
+    this->_setupState();
 }
 
 Game::~Game()
 {
     delete this->_window;
-
-    while (!this->_states.empty())
-    {
-        delete this->_states.top();
-        this->_states.pop();
-    }
+    delete this->_state;
     std::cout << "game cleared\n";
 }
 
@@ -28,9 +23,9 @@ void Game::_setupWindow()
     this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "FMQ");
 }
 
-void Game::_setupStates()
+void Game::_setupState()
 {
-    this->_states.push(new GameState(this->_window));
+    this->_state = new GameState(this->_window);
 }
 
 void Game::updateSFMLEvents()
@@ -53,33 +48,22 @@ void Game::update()
     this->updateSFMLEvents();
     this->updateDeltaTime();
 
-    if (this->_states.empty())
+    if (this->_state->getQuit())
         this->_window->close();
     else
-    {
-        this->_states.top()->update(this->_dt);
-
-        if (this->_states.top()->getQuit())
-        {
-            delete this->_states.top();
-            this->_states.pop();
-        }
-    }
+        this->_state->update();
 }
 
 void Game::render()
 {
     this->_window->clear();
-
-    if (!this->_states.empty())
-        this->_states.top()->render(this->_window);
-
+    this->_state->render(this->_window);
     this->_window->display();
 }
 
 void Game::run()
 {
-    this->_window->setFramerateLimit(60);
+    this->_window->setFramerateLimit(120);
     while (this->_window->isOpen())
     {
         this->update();
