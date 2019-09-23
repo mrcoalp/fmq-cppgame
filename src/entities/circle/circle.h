@@ -6,7 +6,7 @@
 class Circle : public Entity
 {
 public:
-    Circle(int x, int y, int speed, sf::Color color, int radius);
+    Circle(int x, int y, int speed, sf::Texture *texture, sf::Color color, int radius);
     virtual ~Circle();
 
     virtual void animate();

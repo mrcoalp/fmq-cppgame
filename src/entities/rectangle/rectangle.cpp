@@ -1,11 +1,12 @@
 #include "rectangle.h"
 
-Rectangle::Rectangle(int x, int y, int speed, sf::Color color, float width, float height) : Entity(x, y, speed)
+Rectangle::Rectangle(int x, int y, int speed, sf::Texture *texture, sf::Color color, float width, float height) : Entity(x, y, speed, texture)
 {
     this->_shape = new sf::RectangleShape(sf::Vector2f(width, height));
-    this->_shape->setFillColor(color);
     this->_shape->setPosition(x, y);
-    this->_createMovement(speed, static_cast<float>((rand() % 2 + 1) * 10));
+    this->_createMovement(speed);
+    this->_shape->setTexture(texture);
+    this->_shape->setFillColor(color);
 }
 
 Rectangle::~Rectangle()

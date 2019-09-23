@@ -1,10 +1,9 @@
 #include "movementcomponent.h"
 
-MovementComponent::MovementComponent(float maxVelocity, sf::Shape *shape, float acceleration)
+MovementComponent::MovementComponent(float maxVelocity, sf::Shape *shape)
 {
     this->_maxVelocity = maxVelocity;
     this->_shape = shape;
-    this->_acceleration = acceleration;
 }
 
 MovementComponent::~MovementComponent()

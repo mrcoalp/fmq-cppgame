@@ -7,7 +7,7 @@
 class MovementComponent
 {
 public:
-    MovementComponent(float maxVelocity, sf::Shape *shape, float acceleration);
+    MovementComponent(float maxVelocity, sf::Shape *shape);
     virtual ~MovementComponent();
 
     void move(const float dir_x, const float dir_y, const float &dt);
@@ -17,7 +17,6 @@ protected:
 private:
     float _maxVelocity;
     sf::Vector2f _velocity;
-    float _acceleration;
     sf::Shape *_shape;
 };
 
