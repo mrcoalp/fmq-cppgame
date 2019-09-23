@@ -10,23 +10,10 @@ public:
     ~Game();
 
     /**
-     * Updates events occured in sfml
-     */
-    void updateSFMLEvents();
-    /**
-     * Updates game state
-     */
-    void update();
-    /**
-     * Renders game objects
-     */
-    void render();
-    /**
      * Runs game
      * Initializes game loop
      */
     void run();
-    void updateDeltaTime();
 
 protected:
 private:
@@ -39,11 +26,30 @@ private:
     GameState *_state;
 
     /**
-     * Setups game window
+     * Sets up a game window
      * Uses SFML graphics library
      */
     void _setupWindow();
+    /**
+     * Sets up a new game state
+     */
     void _setupState();
+    /**
+     * Checks for events occured in sfml
+     */
+    void _checkSFMLEvents();
+    /**
+     * Updates delta time
+     */
+    void _updateDeltaTime();
+    /**
+     * Updates game state
+     */
+    void _update();
+    /**
+     * Renders game objects
+     */
+    void _render();
 };
 
 #endif // GAME_H

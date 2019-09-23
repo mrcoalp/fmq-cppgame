@@ -4,7 +4,7 @@
 
 Game::Game()
 {
-    //setup window, state
+    //setup window and state
     this->_setupWindow();
     this->_setupState();
 }
@@ -19,7 +19,9 @@ Game::~Game()
 void Game::_setupWindow()
 {
     //new window
-    this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "FMQ");
+    //sf::Style::Close disables resizing of the window
+    //TODO(marco): maybe enable resize later if there is time...
+    this->_window = new sf::RenderWindow(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT), "FMQ", sf::Style::Close);
 }
 
 void Game::_setupState()
@@ -27,7 +29,7 @@ void Game::_setupState()
     this->_state = new GameState(this->_window);
 }
 
-void Game::updateSFMLEvents()
+void Game::_checkSFMLEvents()
 {
     while (this->_window->pollEvent(this->_sfEvent))
     {
@@ -37,31 +39,29 @@ void Game::updateSFMLEvents()
         {
             if (this->_sfEvent.key.code == sf::Keyboard::Space)
             {
-                std::cout << "the space key was pressed" << std::endl;
-                this->_state->startGame();
+                std::cout << "new game or pause current" << std::endl;
+                this->_state->setAnimating();
             }
+            else if (this->_sfEvent.key.code == sf::Keyboard::I)
+                this->_state->addCredit();
         }
     }
 }
 
-void Game::updateDeltaTime()
+void Game::_updateDeltaTime()
 {
     //updates dt with the time it takes to update and render one frame
     this->_dt = this->_dtClock.restart().asSeconds();
 }
 
-void Game::update()
+void Game::_update()
 {
-    this->updateSFMLEvents();
-    this->updateDeltaTime();
-
-    if (this->_state->getQuit())
-        this->_window->close();
-    else
-        this->_state->update(this->_dt);
+    this->_checkSFMLEvents();
+    this->_updateDeltaTime();
+    this->_state->update(this->_dt);
 }
 
-void Game::render()
+void Game::_render()
 {
     this->_window->clear();
     this->_state->render(this->_window);
@@ -70,11 +70,17 @@ void Game::render()
 
 void Game::run()
 {
+    //sets the maximum framerate
     this->_window->setFramerateLimit(60);
+    //prevents repetition of key strokes
+    //we only have single event actions, not repetitive ones like
+    //player movement
     this->_window->setKeyRepeatEnabled(false);
+    //while window is open run the game
+    //updates state and renders objects
     while (this->_window->isOpen())
     {
-        this->update();
-        this->render();
+        this->_update();
+        this->_render();
     }
 }

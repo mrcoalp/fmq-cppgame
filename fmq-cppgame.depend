@@ -537,10 +537,10 @@
 	<stack>
 	<iostream>
 
-1569167239 /home/marco/Development/fmq-cppgame/src/engine/game/game.h
+1569241580 /home/marco/Development/fmq-cppgame/src/engine/game/game.h
 	"../../engine/state/gamestate.h"
 
-1569187189 source:/home/marco/Development/fmq-cppgame/src/engine/game/game.cpp
+1569264542 source:/home/marco/Development/fmq-cppgame/src/engine/game/game.cpp
 	"game.h"
 	<iostream>
 	"../../constants.h"
@@ -1147,20 +1147,21 @@
 	"../../../entities/texture/texture.h"
 	<vector>
 
-1569187189 /home/marco/Development/fmq-cppgame/src/engine/state/gamestate.h
+1569265542 /home/marco/Development/fmq-cppgame/src/engine/state/gamestate.h
 	"../../headers/sfml.h"
 	"../../entities/circle/circle.h"
 	"../../entities/rectangle/rectangle.h"
 	<stack>
 	<iostream>
+	<algorithm>
 
-1569189919 source:/home/marco/Development/fmq-cppgame/src/engine/state/gamestate.cpp
+1569265843 source:/home/marco/Development/fmq-cppgame/src/engine/state/gamestate.cpp
 	"gamestate.h"
 
 1569174369 /home/marco/Development/fmq-cppgame/src/entities/rectangle/rectangle.h
 	"../entity.h"
 
-1569189404 source:/home/marco/Development/fmq-cppgame/src/engine/movement/movementcomponent.cpp
+1569190301 source:/home/marco/Development/fmq-cppgame/src/engine/movement/movementcomponent.cpp
 	"movementcomponent.h"
 
 1569190301 /home/marco/Development/fmq-cppgame/src/engine/movement/movementcomponent.h
