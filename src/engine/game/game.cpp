@@ -40,11 +40,30 @@ void Game::_checkSFMLEvents()
             if (this->_sfEvent.key.code == sf::Keyboard::Space)
             {
                 std::cout << "new game or pause current" << std::endl;
-                this->_state->setAnimating();
+                this->_state->startOrPauseGame();
             }
             else if (this->_sfEvent.key.code == sf::Keyboard::I)
                 this->_state->addCredit();
         }
+        if (this->_sfEvent.type == sf::Event::MouseButtonPressed)
+            if (this->_sfEvent.mouseButton.button == sf::Mouse::Left)
+            {
+                if (this->_state->buttons["START"]->isPressed())
+                {
+                    this->_state->buttons["START"]->playSound();
+                    this->_state->startOrPauseGame();
+                }
+                if (this->_state->buttons["CREDITS_IN"]->isPressed())
+                {
+                    this->_state->buttons["CREDITS_IN"]->playSound();
+                    this->_state->addCredit();
+                }
+                if (this->_state->buttons["CREDITS_OUT"]->isPressed())
+                {
+                    this->_state->buttons["CREDITS_OUT"]->playSound();
+                    this->_state->removeCredits();
+                }
+            }
     }
 }
 
@@ -56,9 +75,9 @@ void Game::_updateDeltaTime()
 
 void Game::_update()
 {
-    this->_checkSFMLEvents();
     this->_updateDeltaTime();
     this->_state->update(this->_dt);
+    this->_checkSFMLEvents();
 }
 
 void Game::_render()

@@ -49,11 +49,11 @@ bool Entity::_checkCollision()
     //TODO(marco): maybe as a property?
     std::map<std::string, float> hitbox;
     hitbox["LEFT"] = this->_shape->getPosition().x;
-    hitbox["RIGHT"] = this->_shape->getPosition().x + this->_shape->getGlobalBounds().width;
+    hitbox["RIGHT"] = this->_shape->getPosition().x + this->_shape->getLocalBounds().width;
     hitbox["UP"] = this->_shape->getPosition().y;
-    hitbox["DOWN"] = this->_shape->getPosition().y + this->_shape->getGlobalBounds().height;
+    hitbox["DOWN"] = this->_shape->getPosition().y + this->_shape->getLocalBounds().height;
     //checks if entity hitbox collides with window border
-    return !(hitbox["LEFT"] > 0 && hitbox["RIGHT"] < WINDOW_WIDTH && hitbox["UP"] > 0 && hitbox["DOWN"] < WINDOW_HEIGHT);
+    return !(hitbox["LEFT"] > 0 && hitbox["RIGHT"] < WINDOW_WIDTH && hitbox["UP"] > 0 && hitbox["DOWN"] < WINDOW_HEIGHT - MENU_BAR_HEIGHT);
 }
 
 float Entity::_getRandomDirection()
