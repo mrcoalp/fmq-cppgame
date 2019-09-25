@@ -3,9 +3,8 @@
 
 #include "../../engine/state/gamestate.h"
 
-class Game
-{
-public:
+class Game {
+   public:
     Game();
     ~Game();
 
@@ -15,15 +14,15 @@ public:
      */
     void run();
 
-protected:
-private:
-    sf::RenderWindow *_window;
+   protected:
+   private:
+    sf::RenderWindow* _window;
     sf::Event _sfEvent;
-    //delta time
-    //keeps track of time needed for one game loop
+    // delta time
+    // keeps track of time needed for one game loop
     sf::Clock _dtClock;
     float _dt;
-    GameState *_state;
+    GameState* _state;
 
     /**
      * Sets up a game window
@@ -39,6 +38,14 @@ private:
      */
     void _checkSFMLEvents();
     /**
+     * Checks for user input
+     */
+    void _checkKeyboardActions();
+    /**
+     * Checks for user input
+     */
+    void _checkMouseActions();
+    /**
      * Updates delta time
      */
     void _updateDeltaTime();
@@ -52,4 +59,4 @@ private:
     void _render();
 };
 
-#endif // GAME_H
+#endif   // GAME_H
