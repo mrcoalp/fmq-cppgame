@@ -209,6 +209,7 @@ void GameState::startOrPauseGame() {
     else if (!this->_gameInProgress && !this->_animating &&
              this->_nrOfCredits > 0) {
         --this->_nrOfCredits;
+        ++this->_totalOutCredits;
         this->_gameInProgress = true;
         this->_animating = true;
     }
