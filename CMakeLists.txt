@@ -25,15 +25,18 @@ set(SOURCES
   src/headers/sfml.h)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "bin")
-file(COPY assets DESTINATION "${CMAKE_BINARY_DIR}/bin")
   
 add_executable(fmq ${SOURCES})
 
+#copy dll from sfml if in windows
 IF(WIN32)
   file(GLOB SFML_BIN
     "sfml/bin/*.dll"
     )
-  file(COPY ${SFML_BIN} DESTINATION "${CMAKE_BINARY_DIR}/bin")
+  file(COPY ${SFML_BIN} DESTINATION "${CMAKE_BINARY_DIR}/bin/Release")
+  file(COPY assets DESTINATION "${CMAKE_BINARY_DIR}/bin/Release")
+ELSE()
+  file(COPY assets DESTINATION "${CMAKE_BINARY_DIR}/bin")
 ENDIF()
 
 target_link_libraries(fmq sfml-graphics sfml-audio sfml-system sfml-window)
