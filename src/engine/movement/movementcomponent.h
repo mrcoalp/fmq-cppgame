@@ -2,7 +2,7 @@
 #define MOVEMENTCOMPONENT_H
 
 #include <iostream>
-#include "../../headers/sfml.h"
+#include "headers/sfml.h"
 
 class MovementComponent {
    public:

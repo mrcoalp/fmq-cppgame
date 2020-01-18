@@ -1,7 +1,7 @@
 #ifndef RECTANGLE_H
 #define RECTANGLE_H
 
-#include "../entity.h"
+#include "entities/entity.h"
 
 class Rectangle : public Entity {
    public:

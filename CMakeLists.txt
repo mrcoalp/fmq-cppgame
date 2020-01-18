@@ -1,28 +1,21 @@
-cmake_minimum_required(VERSION 3.10.2)
-
+cmake_minimum_required(VERSION 3.10)
 project(fmq)
 
-set(SFML_DIR "sfml/lib/cmake/SFML")
-find_package(SFML 2.5 COMPONENTS graphics audio system window)
+# Include cmake util functions
+include(${CMAKE_SOURCE_DIR}/utils/cmake/utils.cmake)
 
-set(SOURCES
-  src/main.cpp
-  src/constants.h
-  src/engine/game/game.h
-  src/engine/game/game.cpp
-  src/engine/movement/movementcomponent.h
-  src/engine/movement/movementcomponent.cpp
-  src/engine/state/gamestate.h
-  src/engine/state/gamestate.cpp
-  src/entities/entity.h
-  src/entities/entity.cpp
-  src/entities/rectangle/rectangle.h
-  src/entities/rectangle/rectangle.cpp
-  src/entities/circle/circle.h
-  src/entities/circle/circle.cpp
-  src/gui/gui.h
-  src/gui/gui.cpp
-  src/headers/sfml.h)
+# Downloads SFML library
+downloadSFML()
+
+set(SFML_DIR "external/SFML-2.5.1/lib/cmake/SFML")
+find_package(SFML 2.5 COMPONENTS graphics audio system window REQUIRED)
+
+file(GLOB_RECURSE SOURCES
+        src/*.h
+        src/*.cpp
+        )
+
+include_directories(src)
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "bin")
   
@@ -31,7 +24,7 @@ add_executable(fmq ${SOURCES})
 #copy dll from sfml if in windows
 IF(WIN32)
   file(GLOB SFML_BIN
-    "sfml/bin/*.dll"
+    "external/SFML-2.5.1//bin/*.dll"
     )
   file(COPY ${SFML_BIN} DESTINATION "${CMAKE_BINARY_DIR}/bin/Release")
   file(COPY assets DESTINATION "${CMAKE_BINARY_DIR}/bin/Release")

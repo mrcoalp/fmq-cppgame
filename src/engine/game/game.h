@@ -1,7 +1,9 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "../../engine/state/gamestate.h"
+#include "engine/state/gamestate.h"
+#include <iostream>
+#include "constants.h"
 
 class Game {
    public:

@@ -2,9 +2,9 @@
 #define ENTITY_H
 
 #include <iostream>
-#include "../constants.h"
-#include "../engine/movement/movementcomponent.h"
-#include "../headers/sfml.h"
+#include "constants.h"
+#include "engine/movement/movementcomponent.h"
+#include "headers/sfml.h"
 
 class Entity {
    public:

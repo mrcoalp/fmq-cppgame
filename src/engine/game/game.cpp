@@ -1,6 +1,4 @@
 #include "game.h"
-#include <iostream>
-#include "../../constants.h"
 
 Game::Game() {
     // setup window and state

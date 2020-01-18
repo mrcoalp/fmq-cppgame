@@ -1,5 +1,5 @@
 #include "gui.h"
-#include <iostream>
+
 gui::Button::Button(float x, float y, sf::Shape* shape, sf::Color idleColor,
                     sf::Color hoverColor, sf::Color activeColor, sf::Font* font,
                     std::string text, unsigned fontSize, sf::Texture* texture) {

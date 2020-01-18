@@ -1,7 +1,8 @@
 #ifndef GUI_H
 #define GUI_H
 
-#include "../headers/sfml.h"
+#include "headers/sfml.h"
+#include <iostream>
 
 enum EButtonState { IDLE = 0, HOVER, ACTIVE };
 

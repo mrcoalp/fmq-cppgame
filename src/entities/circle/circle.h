@@ -1,7 +1,7 @@
 #ifndef CIRCLE_H
 #define CIRCLE_H
 
-#include "../entity.h"
+#include "entities/entity.h"
 
 class Circle : public Entity {
    public:

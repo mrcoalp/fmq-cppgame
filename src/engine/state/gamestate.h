@@ -5,10 +5,10 @@
 #include <iostream>
 #include <sstream>
 #include <stack>
-#include "../../entities/circle/circle.h"
-#include "../../entities/rectangle/rectangle.h"
-#include "../../gui/gui.h"
-#include "../../headers/sfml.h"
+#include "entities/circle/circle.h"
+#include "entities/rectangle/rectangle.h"
+#include "gui/gui.h"
+#include "headers/sfml.h"
 
 class GameState {
    public:
