@@ -1,17 +1,18 @@
 #ifndef GAMESTATE_H
 #define GAMESTATE_H
 
-#include <algorithm>   // std::all_of
+#include <algorithm>  // std::all_of
 #include <iostream>
 #include <sstream>
 #include <stack>
+
 #include "entities/circle/circle.h"
 #include "entities/rectangle/rectangle.h"
 #include "gui/gui.h"
 #include "headers/sfml.h"
 
 class GameState {
-   public:
+public:
     GameState(sf::RenderWindow* window);
     ~GameState();
 
@@ -23,8 +24,8 @@ class GameState {
     void addCredit();
     void removeCredits();
 
-   protected:
-   private:
+protected:
+private:
     sf::RenderWindow* _window;
     std::map<std::string, sf::Texture> _textures;
     std::map<std::string, sf::Font> _fonts;
@@ -79,4 +80,4 @@ class GameState {
     int _getRandomSize();
 };
 
-#endif   // GAMESTATE_H
+#endif  // GAMESTATE_H

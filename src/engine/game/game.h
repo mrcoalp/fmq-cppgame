@@ -1,12 +1,13 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include "engine/state/gamestate.h"
 #include <iostream>
+
 #include "constants.h"
+#include "engine/state/gamestate.h"
 
 class Game {
-   public:
+public:
     Game();
     ~Game();
 
@@ -16,8 +17,8 @@ class Game {
      */
     void run();
 
-   protected:
-   private:
+protected:
+private:
     sf::RenderWindow* _window;
     sf::Event _sfEvent;
     // delta time
@@ -61,4 +62,4 @@ class Game {
     void _render();
 };
 
-#endif   // GAME_H
+#endif  // GAME_H

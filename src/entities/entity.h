@@ -2,12 +2,13 @@
 #define ENTITY_H
 
 #include <iostream>
+
 #include "constants.h"
 #include "engine/movement/movementcomponent.h"
 #include "headers/sfml.h"
 
 class Entity {
-   public:
+public:
     Entity(int x, int y, int speed, sf::Texture* texture);
     virtual ~Entity();
 
@@ -28,9 +29,9 @@ class Entity {
      * Method to be implemented in child classes
      * Each one has a different animation
      */
-    virtual void animate() = 0;   // pure virtual
+    virtual void animate() = 0;  // pure virtual
 
-   protected:
+protected:
     sf::Shape* _shape;
     sf::Texture* _texture;
     MovementComponent* _movement;
@@ -40,7 +41,7 @@ class Entity {
      */
     void _createMovement(const float speed);
 
-   private:
+private:
     float _direction_x;
     float _direction_y;
     bool _hasAnimationFinished;
@@ -55,4 +56,4 @@ class Entity {
     float _getRandomDirection();
 };
 
-#endif   // ENTITY_H
+#endif  // ENTITY_H
